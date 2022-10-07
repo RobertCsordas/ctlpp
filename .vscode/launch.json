@@ -1,0 +1,129 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FIT parallel branch NDR gelu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "simple_fit_gelu", "--task", "fit_parallel_branch_trafo_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1", "-transformer.variant", "ndr_residual_core_gelu", "-transformer.encoder_n_layers", "8", "-amp", "1",
+                    "-state_size", "256", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-transformer.attention_dropout", "0.1", "-dropout", "0.5", "-transformer.n_heads", "4", 
+                    "-batch_size", "512", "-test_batch_size", "500",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "0",
+                    "-grad_clip", "1", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-wd", "0.01", "-trafo_classifier.norm_att", "1"]
+        },
+
+        {
+            "name": "FIT parallel branch Reluni",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "reluni_test", "--task", "fit_parallel_branch_trafo_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1", "-transformer.variant", "relative_universal", "-transformer.encoder_n_layers", "8", "-amp", "1",
+                    "-state_size", "256", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-transformer.attention_dropout", "0.1", "-dropout", "0.5", "-transformer.n_heads", "4", 
+                    "-batch_size", "512", "-test_batch_size", "500",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "0",
+                    "-grad_clip", "1", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-wd", "0.01", "-trafo_classifier.norm_att", "1"]
+        },
+
+        {
+            "name": "FIT alternate NDR",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "fit_alternate_ndr2", "--task", "fit_parallel_branch_trafo_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1000", "-transformer.variant", "ndr_residual_core_gelu", "-transformer.encoder_n_layers", "8", "-amp", "1",
+                    "-state_size", "256", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-transformer.attention_dropout", "0.1", "-dropout", "0.5", "-transformer.n_heads", "4", 
+                    "-batch_size", "512", "-test_batch_size", "500",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "0",
+                    "-grad_clip", "1", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-wd", "0.01", "-fit.variant", "alternate"]
+        },
+
+
+        {
+            "name": "FIT pb 2stage new",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "fit_pb_2stage_new", "--task", "fit_parallel_branch_trafo_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1000", "-transformer.variant", "ndr_residual_core_gelu", "-transformer.encoder_n_layers", "8", "-amp", "1",
+                    "-state_size", "256", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-transformer.attention_dropout", "0.1", "-dropout", "0.5", "-transformer.n_heads", "4", 
+                    "-batch_size", "512", "-test_batch_size", "500",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "12",
+                    "-grad_clip", "1", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-wd", "0.01", "-fit.variant", "parallel_branch_2stage"]
+        },
+
+
+        {
+            "name": "FIT pb 2stage new 2",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "fit_pb_2stage_new2", "--task", "fit_parallel_branch_trafo_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1", "-transformer.variant", "relative_universal", "-transformer.encoder_n_layers", "8", "-amp", "1",
+                    "-state_size", "256", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-transformer.attention_dropout", "0.1", "-dropout", "0.5", "-transformer.n_heads", "4", 
+                    "-batch_size", "512", "-test_batch_size", "500",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "12",
+                    "-grad_clip", "1", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-wd", "0.01", "-fit.variant", "parallel_branch_2stage", "-fit.imbalance", "0"]
+        },
+
+
+        {
+            "name": "FIT 2stage rnn",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": ["--name", "fit_2stage_rnn", "--task", "fit_parallel_branch_rnn_classifier", 
+                     "--log", "tb", "--keep_alive", "1", "-reset", "1", "-stop_after", "150000", "-test_interval",
+                    "1000", "-amp", "1",
+                    "-state_size", "128", "-lr", "1.5e-4", "-optimizer", "adamw", 
+                    "-dropout", "0.5",
+                    "-batch_size", "256",
+                    "-fit.N", "300000", "-ndr.drop_gate", "0.1", "-length_bucketed_sampling", "1",
+                    "-fit.n_functions", "32", "-fit.n_symbols", "8", "-fit.max_depth", "6", "-fit.overlap", "12",
+                    "-grad_clip", "5", "-fit.reversed", "1", "-fit.train_on_pairs", "1", "-fit.symbol_overlap", "3",
+                    "-save_interval", "10000", "-fit.variant", "alternate", "-fit.imbalance", "0",
+                    "-seq_classifier.rnn", "bilstm", "-n_layers", "1"]
+        },
+
+
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Debug File",
+            "justMyCode": false,
+            "program": "${file}",
+            "cwd": "${fileDirname}"
+        }
+    ]
+}

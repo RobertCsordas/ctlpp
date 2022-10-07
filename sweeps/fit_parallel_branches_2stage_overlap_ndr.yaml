@@ -1,0 +1,90 @@
+program: main.py
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - ${args}
+method: grid
+metric:
+  goal: maximize
+  name: validation/valid/accuracy/deeper_val
+parameters:
+  amp:
+    value: 1
+  batch_size:
+    value: 512
+  dropout:
+    value: 0.5
+  length_bucketed_sampling:
+    value: 1
+  log:
+    value: wandb
+  lr:
+    value: 0.00015
+  ndr.drop_gate:
+    value: 0.1
+  optimizer:
+    value: adamw
+  grad_clip:
+    value: 1
+  state_size:
+    value: 256
+  stop_after:
+    value: 80000
+  task:
+    value: fit_parallel_branch_trafo_classifier
+  trafo_classifier.norm_att:
+    value: 0
+  transformer.attention_dropout:
+    value: 0.1
+  transformer.encoder_n_layers:
+    value: 8
+  universal.n_test_layers:
+    value: 10
+  transformer.ff_multiplier:
+    value: 2
+  transformer.n_heads:
+    value: 4
+  transformer.variant:
+    value: ndr_residual_core_gelu
+  wandb_bug_workaround:
+    value: 1
+  fit.n_symbols:
+    value: 8
+  fit.n_functions:
+    value: 32
+  fit.max_depth:
+    value: 6
+  fit.N:
+    value: 300000
+  fit.reversed:
+    value: 1
+  fit.train_on_pairs:
+    value: 1
+  fit.variant:
+    value: parallel_branch_2stage
+  lr_warmup:
+    value: 500
+  fit.symbol_overlap:
+    values:
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+  fit.overlap:
+    values:
+      - 4
+      - 8
+      - 12
+      - 16
+  debug_plot_interval:
+    value: 5
+  sweep_id_for_grid_search:
+    distribution: categorical
+    values:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
